@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《文組也能寫程式？Vibe Coding 打開 AI 協作的新可能》</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .slide {
+            display: none;
+            min-height: calc(100vh - 100px); /* 減去導覽列高度 */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .slide-container {
+             width: 100%;
+             max-width: 1000px;
+             margin: auto;
+             padding: 2rem;
+        }
+        /* For QR code placeholder */
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            text-align: center;
+            color: #555;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col justify-center items-center min-h-screen p-4">
+
+    <div id="presentation-container" class="w-full h-full">
+
+        <!-- Slide 1: Title -->
+        <div id="slide-1" class="slide active flex-col justify-center items-center text-center">
+            <div class="slide-container">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text">文組也能寫程式？</h1>
+                <h2 class="text-2xl md:text-4xl font-semibold text-slate-700">Vibe Coding 打開 AI 協作的新可能</h2>
+                <p class="mt-8 text-xl text-slate-500">Sofia Yan ｜Cofounder & CGO of Numbers Protocol</p>
+                <div class="mt-12 text-sm text-slate-400">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Opening Story -->
+        <div id="slide-2" class="slide flex-col justify-center items-center">
+             <div class="slide-container">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-8"><span class="gradient-text">About Sofia</span>：從放棄 Python 到寫出 AI 自動化 bot</h3>
+                <div class="bg-white p-8 rounded-xl shadow-lg w-full">
+                    <blockquote class="text-lg md:text-xl italic border-l-4 border-indigo-400 pl-6">
+                        中文系，純種文組人，誤打誤撞進了科技新創，又陰錯陽差成為 co-founder，不設限人生驚喜 (嚇) 包開箱中。環境友善支持者，貓奴。 </p> 現為 Numbers Protocol 共同創辦人暨成長策略長。
+                    </blockquote>
+                    <div class="mt-8 space-y-4 text-slate-600">
+                        <p><strong class="text-indigo-500">8年前的挫折：</strong>文理組薪資差距焦慮 → 學Python →  光設定 IDE 就卡住，Hello World 都寫不出來</p>
+                        <p><strong class="text-indigo-500">轉捩點：</strong>公司"全面"導入 AI "同事"，正式成為 Vibe Coder</p>
+                        <p><strong class="text-indigo-500">Vibe Coding 入門點：</strong>你不需要使用程式語言跟電腦溝通，用你的母語 (well, sometimes English will perform better tho) 就可以</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Pain Points -->
+        <div id="slide-3" class="slide flex-col justify-center items-center">
+             <div class="slide-container">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-8"><span class="gradient-text">痛點</span>：文組人的數位工作真相</h3>
+                <div class="w-full space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                        <p class="text-2xl font-semibold">🔥 有多少人每天花大量時間在<span class="text-red-500">重複性</span>的數位工作上？</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-xl mb-2 text-purple-600">工作現實</h4>
+                            <p class="mb-2">策略思考 40% (有趣) vs <span class="font-bold">執行瑣事 60% (痛苦)</span></p>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1">
+                                <li>每天複製貼上數據、整理報表</li>
+                                <li>批次處理圖片、發送個性化郵件</li>
+                                <li>客服分類、活動後收尾結案</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-xl mb-2 text-purple-600">傳統解法困境</h4>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1">
+                                <li><strong>NoCode工具：</strong>還是太複雜、學習曲線高</li>
+                                <li><strong>求助工程師：</strong>排隊等很久，小修改也要重開票</li>
+                                <li><strong>自己硬學：</strong>語法、邏輯、環境設定三重障礙</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Solution: Vibe Coding -->
+        <div id="slide-4" class="slide flex-col justify-center items-center">
+            <div class="slide-container">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-6"><span class="gradient-text">解法登場</span>：Vibe Coding 到底是什麼？</h3>
+                 <p class="text-center text-slate-500 mb-6">核心理念：「完全沉浸於氛圍中，擁抱指數級增長，忘記程式碼的存在」</p>
+                <div class="grid md:grid-cols-3 gap-4 mb-6 text-center">
+                    <div class="bg-indigo-100 p-4 rounded-lg"><h4 class="font-bold">💝 心流狀態優先</h4><p class="text-sm">專注 "創造力" 而非語法</p></div>
+                    <div class="bg-purple-100 p-4 rounded-lg"><h4 class="font-bold">🎯 意圖導向</h4><p class="text-sm">告訴 AI 你要什麼，不管怎麼做</p></div>
+                    <div class="bg-pink-100 p-4 rounded-lg"><h4 class="font-bold">🤝 人機協作</h4><p class="text-sm">AI 負責寫，人類負責審查優化</p></div>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-lg w-full overflow-x-auto">
+                    <table class="w-full text-sm md:text-base text-left">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="p-2 md:p-4">面向</th>
+                                <th class="p-2 md:p-4 text-red-500">傳統編程</th>
+                                <th class="p-2 md:p-4 text-blue-500">No-Code平台</th>
+                                <th class="p-2 md:p-4 text-green-500">Vibe Coding</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b"><td class="p-2 md:p-4 font-semibold">溝通方式</td><td class="p-2 md:p-4">程式語言</td><td class="p-2 md:p-4">拖拉組件</td><td class="p-2 md:p-4 font-bold">自然語言對話</td></tr>
+                            <tr class="border-b"><td class="p-2 md:p-4 font-semibold">學習門檻</td><td class="p-2 md:p-4">高 (語法+邏輯)</td><td class="p-2 md:p-4">中 (組件邏輯)</td><td class="p-2 md:p-4 font-bold">低 (會說話就行)</td></tr>
+                            <tr class="border-b"><td class="p-2 md:p-4 font-semibold">角色定位</td><td class="p-2 md:p-4">編碼者</td><td class="p-2 md:p-4">公民開發者</td><td class="p-2 md:p-4 font-bold">AI協調者</td></tr>
+                            <tr><td class="p-2 md:p-4 font-semibold">處理錯誤</td><td class="p-2 md:p-4">爬文+試錯</td><td class="p-2 md:p-4">查手冊</td><td class="p-2 md:p-4 font-bold">直接問AI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Case Studies -->
+        <div id="slide-5" class="slide flex-col justify-center items-center">
+            <div class="slide-container">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">我的 2+ 個「<span class="gradient-text">Vibe Coding 奇蹟</span>」實戰案例</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Case 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+                        <h4 class="font-bold text-xl mb-3 text-indigo-600">🛠️ 專案 1：智能客服分流機器人</h4>
+                        <p class="text-sm text-slate-500 mb-3">問題：多達七八個管道的客服詢問，需要人工過濾大量 spam。</p>
+                        <div class="mb-3">
+                            <p class="font-semibold">技術組合：</p>
+                            <p><strong> *Claude:</strong> 寫 Google Apps Script</p>
+                            <p><strong> *GPT:</strong> 內容理解和分類</p>
+                        </div>
+                        <div class="mt-auto bg-indigo-50 p-4 rounded-lg">
+                            <p class="font-semibold text-indigo-800">成果：</p>
+                            <p class="text-sm text-indigo-700">3小時完成自動化流程，AI過濾掉 70% 以上的無效訊息，大幅減少干擾。</p>
+                        </div>
+                    </div>
+                    <!-- Case 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+                        <h4 class="font-bold text-xl mb-3 text-purple-600">🌐 專案 2+：Youtube 頻道官方網站 & Prompt 優化小工具 </h4>
+                         <p class="text-sm text-slate-500 mb-3">需求：為新頻道建立頻道官網與社群，為變現鋪路。</p>
+                        <div class="mb-3">
+                             <p class="font-semibold">工具組合：</p>
+                             <p><strong>頻道規劃 + Gemini 2.5 Pro:</strong> 生成網站文案架構</p>
+                             <p><strong>GitHub Copilot & Pages:</strong> 進階功能 (雙語切換/AI 小工具)與免費部署</p>
+                        </div>
+                        <div class="mt-auto bg-purple-50 p-4 rounded-lg">
+                            <p class="font-semibold text-purple-800">成果：</p>
+                            <p class="text-sm text-purple-700">1 小時從無到有，完成一個完全客製化、可上線的個人網站。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Practical Tips -->
+        <div id="slide-6" class="slide flex-col justify-center items-center">
+            <div class="slide-container">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">克服文組恐懼的<span class="gradient-text">三個關鍵心法</span></h3>
+                <div class="space-y-4">
+                    <!-- Tip 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl text-indigo-600 mb-2">🧰 心法一：選對AI工具 (工具箱概念)</h4>
+                        <p class="italic text-slate-500 mb-2">「我的瀏覽器同時開 6-7 個AI，像工具箱一樣各有專長」</p>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Claude: 程式碼螺絲起子</span>
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">ChatGPT: 內容萬能鉗</span>
+                            <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Gemini: Google 生態扳手</span>
+                        </div>
+                    </div>
+                    <!-- Tip 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl text-purple-600 mb-2">💬 心法二：擁抱「笨問題」自由</h4>
+                        <p class="italic text-slate-500 mb-2">「AI不會翻白眼，還會給你很多情緒價值」</p>
+                        <p>隨時問、反覆問、細節問。把AI當成最有耐心的老師，直接貼上錯誤訊息請它 debug。</p>
+                    </div>
+                    <!-- Tip 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl text-pink-600 mb-2">🎯 心法三：從小事開始，先求解決</h4>
+                        <p class="italic text-slate-500 mb-2">「不要想著寫大系統，從一個 Excel 自動化開始」</p>
+                        <p><strong>推薦入門：</strong>Google Apps Script (介面像Google文件，不可怕)。心態是先讓東西動起來，目標是解決問題，而非追求完美程式碼。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Future & CTA -->
+        <div id="slide-7" class="slide flex-col justify-center items-center">
+            <div class="slide-container">
+                 <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">當人人都是 <span class="gradient-text">AI 協調者</span></h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl mb-2 text-sky-600">📊 趨勢數據</h4>
+                        <p>預計2030年，AI可自動化 <strong class="text-2xl">80%</strong> 日常編程任務。</p>
+                        <p class="mt-2">開發者角色轉變：從編碼者 → <strong class="text-sky-700">AI 協調者和架構師</strong></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl mb-2 text-emerald-600">💡 破解AI焦慮</h4>
+                        <p>「AI 無法取代你的人生經驗和市場敏感度，那是最有價值的 <strong class="text-2xl">40%</strong> 策略思考部分」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Final -->
+        <div id="slide-8" class="slide flex-col justify-center items-center text-center">
+            <div class="slide-container">
+                <blockquote class="text-2xl md:text-4xl font-bold mb-12">
+                    「AI不是工具，是你的<span class="gradient-text">團隊同事</span>。<br />現在就跟AI開始對話吧！」
+                </blockquote>
+                <div class="mt-8">
+                    <h4 class="font-bold text-xl mb-4">資源與連結</h4>
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <div class="flex flex-col items-center">
+                           <div class="qr-code">QR Code</div>
+                           <p class="text-sm mt-2">科科 AI Shorts</p>
+                        </div>
+                         <div class="flex flex-col items-center">
+                           <div class="qr-code">QR Code</div>
+                           <p class="text-sm mt-2">CContact Sofia</p>
+                        </div>
+                    </div>
+                </div>
+                 <p class="mt-12 text-2xl font-bold">謝謝聆聽</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 h-[50px] bg-white/70 backdrop-blur-sm shadow-t-lg flex justify-center items-center z-50">
+        <div class="flex items-center gap-4">
+            <button id="prev-btn" class="p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span id="slide-indicator" class="text-sm text-slate-600 w-12 text-center">1 / 8</span>
+            <button id="next-btn" class="p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideIndicator = document.getElementById('slide-indicator');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function updateView() {
+                // Deactivate all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                
+                // Activate the current slide
+                const slideToShow = document.getElementById(`slide-${currentSlide + 1}`);
+                if (slideToShow) {
+                    slideToShow.classList.add('active');
+                }
+
+                // Update indicator
+                slideIndicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+                // Update button states
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+            }
+
+            function showNextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateView();
+                }
+            }
+
+            function showPrevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateView();
+                }
+            }
+            
+            // Event Listeners
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    showNextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevSlide();
+                }
+            });
+
+            // Initial setup
+            updateView();
+        });
+    </script>
+</body>
+</html>
